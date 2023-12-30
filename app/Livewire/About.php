@@ -1,56 +1,53 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Livewire;
 
-use App\Models\About;
-use App\Models\Home;
+use App\Models\About as ModelsAbout;
 use Illuminate\Http\Request;
-class HomeController extends Controller
+use Livewire\Component;
+
+class About extends Component
 {
-    public function Home(){
-        $data = Home::get();
-        $about = About::get();
-        return view ('front.home',[
-            'data'=>$data,
-            'about'=>$about
+    public function render()
+    {
+        $data = ModelsAbout::get();
+        return view('livewire.about',[
+            'data'=>$data
            ]);
     }
+    
 
-    public function Homepost(Request $request){
+    public function about(Request $request){
         if($request->add_to_update == "Add"){
             $home = request()->validate([
                 'image'=>'required'
             ]);
-            $home = new Home;
+            $home = new ModelsAbout;
         }else{
-            $home = Home::find($request->id);
+            $home = ModelsAbout::find($request->id);
         }
       
+        
         $home->subheading = $request->subheading;
         $home->heading = $request->heading;
+        $home->paragraph = $request->paragraph;
 
         if(!empty($request->file('image'))){
 
-            if(!empty($home->image) && file_exists('images/' . $home->image))
+            if(!empty($home->image) && file_exists('about/images/' . $home->image))
             {
-            unlink('images/' . $home->image);
+            unlink('about/images/' . $home->image);
             }
 
             $file = $request->file('image');
             $filename = $file->getClientOriginalName();
-            $file->move('images',$filename);
+            $file->move('about/images',$filename);
             $home->image =$filename;
         }
 
 
         $home->save();
         return redirect()->back()->with('status','Information Sucessfully Saved');
+    
     }
-
-
-
-    // About Section
-
-    
-    
 }

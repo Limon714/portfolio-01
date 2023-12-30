@@ -11,7 +11,7 @@
     <body>
         <div class="sidebar">
             <div class="logo-details">
-                <i class='bx bx-store-alt'></i>
+              <i class='bx bx-buoy'></i>
               <span class="logo_name">Bleak</span>
             </div>
               <ul class="nav-links">
@@ -22,7 +22,7 @@
                   </a>
                 </li>
                 <li>
-                  <a wire:navigate wire:navigate href="#">
+                  <a wire:navigate wire:navigate href="{{ route('aboutpage') }}">
                     <i class='bx bxs-info-circle'></i>
                     <span class="links_name">About</span>
                   </a>
@@ -63,7 +63,7 @@
 
 
                 <li class="log_out">
-                  <a href="{{ route('home') }}">
+                  <a href="{{ route('homepage') }}">
                     <i class='bx bx-log-out'></i>
                     <span class="links_name">Log out</span>
                   </a>

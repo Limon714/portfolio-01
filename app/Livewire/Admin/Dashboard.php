@@ -14,4 +14,6 @@ class Dashboard extends Component
             'data'=>$data
            ]);
     }
+
+  
 }
