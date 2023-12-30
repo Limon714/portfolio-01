@@ -85,7 +85,7 @@
                         </div>
                         <div class="col-md-4 col-sm-12 col-xs-12">
                             <div class="intro-image">
-                                <img src="{{asset('front/images/intro-image.jpg')}}" alt="">
+                                <img src="{{ url('images/' . $data[0]->image) }}" class="w-48 h-48" alt="">
                             </div>
                         </div>
                     </div>
@@ -105,17 +105,18 @@
                     <div class="col-md-6 col-sm-12 col-xs-12">
                         <div class="content-left">
                             <div class="section-title section-title-left">
-                                <h3>About Me</h3>
+                                <h3>{{ $about[0]->subheading }}</h3>
                             </div>
                             <div class="content">
-                                <h2>I am a Graphic Designer</h2>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut doloremque ratione perferendis possimus voluptatibus distinctio
-                                autem expedita qui unde modi impedit officia illum praesentium amet, vero quos natus veritatis totam!</p>
+                                <h2>{{ $about[0]->heading }}</h2>
+                                <p>{{ $about[0]->paragraph}}</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6 col-sm-12 col-xs-12">
-                        <div class="content-right"></div>
+                        <div class="content-right">
+                            <img src="{{ url('about/images/' . $about[0]->image) }}" width="400px" height="380px" style="margin-left: 140px">
+                        </div>
                     </div>
                 </div>
             </div>
